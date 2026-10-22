@@ -34,10 +34,6 @@ jobs:
           source: "."
           target: "/var/www/tundra-berry-royal-bloom"
           rm: true
-          exclude: |
-            .git
-            .github
-            node_modules
 
       - name: Install production dependencies and restart app
         uses: appleboy/ssh-action@v1.0.0
