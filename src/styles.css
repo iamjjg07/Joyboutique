@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", serif;
+
+  --color-paper: #f6f3ee;
+  --color-paper-deep: #efeae2;
+  --color-ink: #1c1916;
+  --color-muted: #6e675f;
+  --color-subtle: #8a8278;
+  --color-stone: #e8e2d8;
+  --color-line: #d9d1c6;
+  --color-slate: #4f5e66;
+  --color-slate-soft: #e7ecee;
+
+  --shadow-sheet: 0 24px 60px -32px rgb(28 25 22 / 0.45);
+
+  --ease-out-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-slate);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-stone);
+    color: var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+.aspect-look {
+  aspect-ratio: 2 / 3;
+}
+
+.aspect-room {
+  aspect-ratio: 3 / 2;
+}
+
+.look-zoom {
+  transition: transform 400ms var(--ease-out-smooth);
+}
+
+.group:hover .look-zoom {
+  transform: scale(1.03);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.rise {
+  animation: rise 500ms var(--ease-out-smooth) both;
+}
+
+.rise-2 {
+  animation-delay: 80ms;
+}
+
+.rise-3 {
+  animation-delay: 160ms;
+}
+
+.rise-4 {
+  animation-delay: 240ms;
+}
+
+.overlay {
+  background: rgb(28 25 22 / 0.4);
+}
+
+.overlay[data-state="open"] {
+  animation: fade 250ms var(--ease-out-smooth) both;
+}
+
+.overlay[data-state="closed"] {
+  animation: fade 150ms var(--ease-out-smooth) reverse both;
+}
+
+.sheet {
+  box-shadow: var(--shadow-sheet);
+}
+
+.sheet[data-state="open"] {
+  animation: sheet-in 250ms var(--ease-out-smooth) both;
+}
+
+.sheet[data-state="closed"] {
+  animation: sheet-out 150ms var(--ease-out-smooth) both;
+}
+
+.menu-panel[data-state="open"] {
+  animation: fade 250ms var(--ease-out-smooth) both;
+}
+
+.menu-panel[data-state="closed"] {
+  animation: fade 150ms var(--ease-out-smooth) reverse both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sheet-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .overlay,
+  .sheet,
+  .menu-panel,
+  .look-zoom {
+    animation: none;
+    transition: none;
+  }
+
+  .group:hover .look-zoom {
+    transform: none;
+  }
+}

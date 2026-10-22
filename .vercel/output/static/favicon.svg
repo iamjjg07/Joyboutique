@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Joy Come in the Morning">
+  <rect width="32" height="32" rx="6" fill="#F6F3EE"/>
+  <path d="M12.2 8.15h10.2" fill="none" stroke="#1C1916" stroke-width="1.45" stroke-linecap="square"/>
+  <path d="M19.35 8.15v9.7c0 3.35-2.7 5.15-5.85 4.15" fill="none" stroke="#1C1916" stroke-width="1.85" stroke-linecap="butt"/>
+  <path d="M10.4 25.55h11.2" fill="none" stroke="#4F5E66" stroke-width="1.2" stroke-linecap="square"/>
+</svg>
